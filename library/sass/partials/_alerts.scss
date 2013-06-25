@@ -6,7 +6,9 @@
 // Base styles
 // -------------------------
 
-.alert {
+.alert,
+.validation_error,
+#gforms_confirmation_message {
   padding: 8px 35px 8px 14px;
   margin-bottom: $baseLineHeight;
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
@@ -44,7 +46,14 @@
   color: $successText;
 }
 .alert-danger,
-.alert-error {
+.alert-error,
+.alert-error,
+.validation_error,
+.gform_wrapper .gfield_error input[type=text],
+.gform_wrapper .gfield_error input[type=tel],
+.gform_wrapper .gfield_error input[type=email],
+.gform_wrapper .gfield_error textarea,
+.gform_wrapper .gfield_error select {  
   background-color: $errorBackground;
   border-color: $errorBorder;
   color: $errorText;

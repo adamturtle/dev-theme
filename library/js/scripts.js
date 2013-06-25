@@ -99,5 +99,32 @@ jQuery(document).ready(function($) {
 	$('.alert-message').alert();
 	
 	$('.dropdown-toggle').dropdown();
+  
+  // Allow top level of dropdowns to be clicked
+  $('[data-toggle=dropdown]').click(function(e){
+    window.location = e.target.href;
+  });
+    
+  /**
+   * Form validation
+   *
+   */
+
+  function validate_gravity_form(){
+    var message = '<ul>';
+    $('.validation_message').each(function(){
+      $this = $(this),
+      $field = $this.closest('li').find('label').text().replace('*',''),            
+      message+= '<li><strong>'+ $field + '</strong> - ' + $this.text() + '</li>';
+    })
+    message+= '</ul>';
+    
+    $('#error_list').html(message);
+  }
+    
+  $(document).on('gform_post_render', function(event,form_id,current_page){
+    validate_gravity_form();
+  });
+ 
  
 }); /* end of as page load scripts */

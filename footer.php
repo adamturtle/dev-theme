@@ -15,8 +15,6 @@
 						<?php bones_footer_links(); // Adjust using Menus in Wordpress Admin ?>
 					</nav>
 					
-					<p class="pull-right muted">Mashing together <a href="https://github.com/jlong/sass-twitter-bootstrap">Sass Twitter Bootstrap</a> and <a href="http://320press.com/wpbs">WordPress Bootstrap</a>.</p>
-			
 					<p class="attribution muted">&copy; <?php bloginfo('name'); ?></p>
 				
 				</div> <!-- end #inner-footer -->

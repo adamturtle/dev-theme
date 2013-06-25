@@ -1,0 +1,243 @@
+//
+// Gravity Forms
+// --------------------------------------------------
+
+.gform_wrapper ul { list-style: none; margin-left: 0; }
+.gform_wrapper li { background: none; padding:0;margin:0 }
+.gform_wrapper form { margin-bottom: 0; }
+ 
+.gfield_radio input,
+.gfield_checkbox input {
+  vertical-align: 0;
+}
+.gfield_radio label,
+.gfield_checkbox label {
+  display: inline-block;
+  margin-left: 8px;
+}
+ 
+// Hide the input-specific validation messages
+// since we'll be applying Bootstrap error styling to the fields
+.gform_wrapper .validation_message { display: none; }
+ 
+// Use Bootstrap's "red" variable for the required asterisk:
+.gform_wrapper .gfield_required {
+  color: $red;
+  padding-left: 1px;
+}
+ 
+// Apply error text styling to labels
+.gform_wrapper .gfield_error label {
+  color: $errorText;
+}
+
+.gform_wrapper .top_label li.gfield.gf_left_half {
+	margin: 0 0 8px 0;
+	width: 49%;
+}
+
+.gform_wrapper .top_label li.gfield.gf_right_half {
+	margin: 0 0 8px 0;
+	width: 49%;
+}
+
+.gform_wrapper .top_label li.gfield.gf_left_half {
+	float: left;
+	clear: left !important;
+}
+
+.gform_wrapper .top_label li.gfield.gf_right_half {
+	float: right;
+	clear: right !important;
+}
+
+.gform_wrapper .top_label li.gfield.gf_left_half input.medium,
+.gform_wrapper .top_label li.gfield.gf_left_half input.large,
+.gform_wrapper .top_label li.gfield.gf_left_half select.medium,
+.gform_wrapper .top_label li.gfield.gf_left_half select.large,
+.gform_wrapper .top_label li.gfield.gf_right_half input.medium,
+.gform_wrapper .top_label li.gfield.gf_right_half input.large,
+.gform_wrapper .top_label li.gfield.gf_right_half select.medium,
+.gform_wrapper .top_label li.gfield.gf_right_half select.large {
+	width: 97%;
+}
+
+.gform_wrapper .top_label li.gfield.gf_left_half textarea,
+.gform_wrapper .top_label li.gfield.gf_right_half textarea {
+	width: 98%;
+}
+
+.gform_wrapper .top_label li.gfield.gf_left_half input.small,
+.gform_wrapper .top_label li.gfield.gf_right_half input.small {
+	width: 35%;
+}
+
+.gform_wrapper .top_label li.gfield.gf_left_half+li.gsection,
+.gform_wrapper .top_label li.gfield.gf_right_half+li.gsection {
+	padding: 16px 0 8px 0;
+}
+
+.gform_wrapper .top_label li.gfield.gf_left_half+li.gfield.gsection.gf_left_half,
+.gform_wrapper .top_label li.gfield.gf_right_half+li.gfield.gsection.gf_left_half,
+.gform_wrapper .top_label li.gfield.gf_left_half+li.gfield.gsection.gf_right_half,
+.gform_wrapper .top_label li.gfield.gf_right_half+li.gfield.gsection.gf_right_half,
+.gform_wrapper .top_label li.gfield.gsection.gf_left_half+li.gfield.gsection.gf_left_half,
+.gform_wrapper .top_label li.gfield.gsection.gf_right_half+li.gfield.gsection.gf_left_half,
+.gform_wrapper .top_label li.gfield.gsection.gf_right_half+li.gfield.gsection.gf_right_half {
+	padding: 16px 0 8px 0;
+}
+
+.gform_wrapper .top_label li.gfield.gsection.gf_left_half+li.gfield.gsection.gf_right_half {
+	padding: 0 0 8px 0;
+}
+
+.gform_wrapper .top_label li.gfield.gsection.gf_left_half+li.gfield.gsection.gf_right_half+li.gfield.gsection.gf_left_half+li.gfield.gsection.gf_right_half {
+	padding: 16px 0 8px 0;
+}
+
+.gform_wrapper .top_label li.gfield.gf_left_half+li.gfield,
+.gform_wrapper .top_label li.gfield.gf_right_half+li.gfield,
+.gform_wrapper .top_label li.gfield.gf_left_half+.gform_footer,
+.gform_wrapper .top_label li.gfield.gf_right_half+.gform_footer {
+	clear: both
+}
+
+.gform_wrapper textarea {
+  width: 100%;
+}
+
+.gform_wrapper #spacer {
+  height: 30px;
+  padding: 12px 0;
+}
+
+.gform_wrapper .gfield_error input[type=text], 
+.gform_wrapper .gfield_error input[type=tel], 
+.gform_wrapper .gfield_error input[type=email], 
+.gform_wrapper .gfield_error textarea, 
+.gform_wrapper .gfield_error select {
+  background: none;
+}
+
+.gform_wrapper .gform_ajax_spinner {
+  float: left;
+  margin: 5px 10px;
+}
+
+.gform_wrapper .gform_footer {
+  clear: both;
+}
+
+.gform_wrapper .gform_footer .gform_button {
+  float: left;  
+}
+
+.gform_wrapper .gfield.province {
+  height: 62px;
+}
+
+.gform_wrapper .top_label li.gfield.gf_left_half.email,
+.gform_wrapper .top_label li.gfield.gf_right_half.email {
+  clear:both !important;
+}
+
+.gform_wrapper .validation_error li {
+  color: darken($errorText,10%);
+  font-size: 90%
+}
+
+.gform_wrapper .validation_error li strong {
+  color: darken($errorText,10%);
+}
+
+.gform_wrapper .gfield.clear {
+  clear:both;
+}
+
+.gform_wrapper .multipart {
+  width: 10%;
+  clear: none;
+  float: left;
+  margin-right: 20px;
+  margin-bottom:8px;
+    
+  &.multipart_right {
+    clear: right !important;        
+    margin-left: 12px;
+    
+    &.hide_label {
+      margin-left: 0;
+    }
+  }
+  
+  label {
+    white-space: nowrap;
+  }
+    
+  &.hide_label label {
+    visibility: hidden;
+    font-size: 1px;
+  }  
+  input {
+    width: 100%;
+  }
+  
+  .charleft {
+    font-size: 1px;
+    display: none;
+  }
+}
+
+
+// Phone
+@media (max-width: 767px) {
+  body .gform_wrapper .top_label li.gfield.gf_left_half {
+  	width: 100%;
+  }
+
+  body .gform_wrapper .top_label li.gfield.gf_right_half {
+  	width: 100%;
+  }
+
+  body .gform_wrapper .top_label li.gfield.gf_left_half {
+  	float: none;
+  }
+
+  body .gform_wrapper .top_label li.gfield.gf_right_half {
+  	float: none;
+  }
+
+  body.home h1 {
+    font-size: 24px;
+  }
+
+  body.home #hero-home p {
+    font-size: 18px;
+    max-width: 260px;
+  }
+
+  body.home #hero-home .video iframe {
+    width:100%;
+    margin-top: 20px;
+  }
+
+  #hero-home article {
+    width:90%;
+    margin: 0 5%;
+    padding-top: 30px;
+    text-align: right;
+  }
+
+  #feature-box .feature.span4 {
+    width: auto;
+  }
+
+  body .gform_wrapper .top_label li.gfield.gf_right_half,
+  body .gform_wrapper .top_label li.gfield.gf_left_half {
+    clear:both !important;
+  }
+
+  .gform_wrapper .multipart.multipart_right {
+    margin-left: 0 !important;
+  }
+}

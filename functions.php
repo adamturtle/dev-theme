@@ -1,12 +1,49 @@
 <?php
-/*
-Author: Eddie Machado
-URL: htp://themble.com/bones/
+/**
+ * -----------------------------------------------------------------
+ *  Dev Theme
+ * -----------------------------------------------------------------
+ *
+ * This theme is developed by Salt & Pepper for use as a framework
+ * for Wordpress theme development. This theme builds upon the 
+ * Bones (htp://themble.com/bones/) theme by Eddie Machado and 
+ * incorporates SCSS (http://sass-lang.org) and Twitter Bootstrap
+ * (http://bootstrap.twitter.com).
+ *
+ * @author Salt & Pepper (https://github.com/saltandpepper)
+ */
 
-This is where you can drop your custom functions or
-just edit things like thumbnail sizes, header images, 
-sidebars, comments, ect.
-*/
+/**
+ * -----------------------------------------------------------------
+ *  OPTIONS
+ *  Set options for this theme instance
+ * -----------------------------------------------------------------
+ *
+ * -----------------------------------------------------
+ *  Show sidebars?
+ * -----------------------------------------------------
+ */
+ $show_sidebars = FALSE;
+
+/**
+ * -----------------------------------------------------
+ *  Google Analytics?
+ * -----------------------------------------------------
+ */ 
+ $google_analytics = '';
+
+/**
+ * -----------------------------------------------------
+ *  Allow comments?
+ * -----------------------------------------------------
+ */ 
+ $allow_comments = FALSE;
+
+
+
+
+
+
 
 // Get Bones Core Up & Running!
 require_once('library/bones.php');            // core functions (don't remove)
@@ -19,16 +56,8 @@ require_once('library/options-panel.php');
 require_once('library/shortcodes.php');
 
 // Admin Functions (commented out by default)
-// require_once('library/admin.php');         // custom admin functions
+require_once('library/admin.php');         // custom admin functions
 
-// Custom Backend Footer
-add_filter('admin_footer_text', 'bones_custom_admin_footer');
-function bones_custom_admin_footer() {
-	echo '<span id="footer-thankyou">Developed by <a href="http://320press.com" target="_blank">320press</a></span>. Built using <a href="http://themble.com/bones" target="_blank">Bones</a>.';
-}
-
-// adding it to the admin area
-add_filter('admin_footer_text', 'bones_custom_admin_footer');
 
 // Set content width
 if ( ! isset( $content_width ) ) $content_width = 580;
@@ -603,9 +632,15 @@ if( !function_exists( "theme_js" ) ) {
       array('jquery'), 
       '1.2' );
   
+    wp_register_script(  'bootstrap-hover-dropdown', 
+      get_template_directory_uri() . '/library/js/bootstrap-hover-dropdown.js', 
+      array('jquery'), 
+      '1.2' );
+  
     wp_enqueue_script('bootstrap');
     wp_enqueue_script('wpbs-scripts');
     wp_enqueue_script('modernizr');
+    wp_enqueue_script('bootstrap-hover-dropdown');
     
   }
 }
@@ -776,4 +811,48 @@ function get_wpbs_theme_options(){
       }
 } // end get_wpbs_theme_options function
 
-?>
+/**
+ * Add TinyMCE buttons for shortcodes
+ *
+ * @link http://wp.smashingmagazine.com/2012/05/01/wordpress-shortcodes-complete-guide/
+ * @link http://brettterpstra.com/adding-a-tinymce-button/
+ */
+add_action( 'init', 'sp_tinymce_shortcode_buttons' );
+add_filter( 'tiny_mce_version', 'sp_refresh_tinymce' );
+function sp_tinymce_shortcode_buttons() {
+	// Don't bother doing this stuff if the current user lacks permissions
+	if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) )
+		return;
+	// Add only in Rich Editor mode
+	if ( get_user_option( 'rich_editing' ) == 'true' ) {
+		add_filter( 'mce_external_plugins', 'sp_tinymce_plugins' );
+		add_filter( 'mce_buttons', 'sp_register_tinymce_shortcode_buttons' );
+	}
+}
+function sp_register_tinymce_shortcode_buttons( $buttons ) {
+	array_push( $buttons, "|", "buttons" );
+	array_push( $buttons, "|", "cols" );
+	return $buttons;
+}
+function sp_tinymce_plugins( $plugin_array ) {
+	$plugin_array['buttons'] = get_template_directory_uri() . '/library/js/tinymce-buttons.js';
+	$plugin_array['cols'] = get_template_directory_uri() . '/library/js/tinymce-buttons.js';
+	return $plugin_array;
+}
+function sp_refresh_tinymce( $ver ) {
+	$ver += 3;
+	return $ver;
+}
+
+/* Turn on/off comments */
+function sp_close_comments(){  
+  global $allow_comments;
+  return $allow_comments;
+}
+add_filter('comments_open', 'sp_close_comments');
+
+// Gravity Forms validation
+function sp_custom_validation_message($message, $form){
+  return '<div class="validation_error"><p>Please correct the following errors:</p><div id="error_list"></div></div>';
+}
+add_filter("gform_validation_message", "sp_custom_validation_message", 10, 2);

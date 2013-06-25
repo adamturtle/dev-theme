@@ -7,7 +7,8 @@
 // --------------------------------------------------
 
 // Core
-.btn {
+.btn,
+.gform_button {
   display: inline-block;
   @include ie7-inline-block();
   padding: 4px 12px;
